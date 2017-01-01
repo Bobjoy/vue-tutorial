@@ -1,0 +1,11 @@
+{
+  "name": "vue-tutorial",
+  "version": "1.0.0",
+  "description": "Vue Study",
+  "main": "index.js",
+  "scripts": {
+    "serv": "browser-sync start --server --files=\"*.html\""
+  },
+  "author": "bobjoy <bobjoy1010@qq.com>",
+  "license": "ISC"
+}

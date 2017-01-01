@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Hello World</h1>
+    <p>{{message}}</p>
+    <hr>
+
+    <h1>双向绑定</h1>
+    <p>{{message}}</p>
+    <input type="text" v-model="message">
+    <hr>
+
+    <h1>渲染列表</h1>
+    <ul>
+      <li v-for="todo in todos">{{todo.text}}</li>
+    </ul>
+    <hr>
+
+    <h1>处理用户输入</h1>
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage">Reverse</button>
+    <hr>
+
+    <h1>综合</h1>
+    <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo" />
+    <ul>
+      <li v-for="todo in todos">
+        <span>{{todo.text}}</span>
+        <button v-on:click="removeTodo($index)">X</button>
+      </li>
+    </ul>
+
+  </div>
+  <script src="https://vuejs.org.cn/js/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue.js!',
+        newTodo: '',
+        todos: [
+          {text: 'Learn JavaScript'},
+          {text: 'Learn Vue.js'},
+          {text: 'Add some todos'}
+        ]
+      },
+      methods: {
+        reverseMessage: function(){
+          this.message = this.message.split('').reverse().join('');
+        },
+        addTodo: function() {
+          var text = this.newTodo.trim();
+          if (text) {
+            this.todos.push({text: text});
+            this.newTodo = '';
+          }
+        },
+        removeTodo: function(index) {
+          this.todos.splice(index, 1);
+        }
+      }
+    })
+  </script>
+</body>
+</html>
